@@ -90,10 +90,10 @@ const User: React.FC = () => {
                                 <Typography variant={'subtitle2'} sx={{ marginLeft: { sm: 2, xs: 0 }, marginTop: 1 }}>
                                     <b>Статус: </b>{status !== '' ? status : 'Статус отсутсвует'}</Typography>
                                 <Typography variant={'subtitle2'} sx={{ marginLeft: { sm: 2, xs: 0 }, marginTop: 1 }}>
-                                    <b>Подписки: </b>{followingCount}
+                                    <b>Підписки: </b>{followingCount}
                                 </Typography>
                                 <Typography variant={'subtitle2'} sx={{ marginLeft: { sm: 2, xs: 0 }, marginTop: 1 }}>
-                                    <b>Подписчики: </b>{followersCount}
+                                    <b>Читачі: </b>{followersCount}
                                 </Typography>
                             </Box>
                         </Box>
@@ -115,23 +115,23 @@ const User: React.FC = () => {
                         </Box>
                     </Paper>
                     {
-                        posts.length === 0
-                          ? <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginY: 20 }}>
-                                <Typography variant='h5'>
-                                    Пока нет публикаций
-                                </Typography>
-                            </Box>
-                          : posts.map(({ id, text, image, updatedAt }) =>
-                                <SinglePost
-                                    key={id}
-                                    text={text}
-                                    postImage={image}
-                                    userImage={userImagePath}
-                                    userName={userName}
-                                    time={updatedAt}
-                                />
-
-                          )
+                      posts.length === 0
+                        ? <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginY: 20 }}>
+                              <Typography variant='h5'>
+                                  Пока немає публікацій
+                              </Typography>
+                          </Box>
+                        : posts.map(({ id, text, image, updatedAt }) =>
+                            <SinglePost
+                                key={id}
+                                text={text}
+                                postImage={image}
+                                userImage={userImagePath}
+                                userName={userName}
+                                time={updatedAt}
+                            >
+                            </SinglePost>
+                        )
                     }
 
                 </>)

@@ -35,21 +35,21 @@ const Header: React.FC<HeaderProps> = ({ isAuth }) => {
                 </Typography>
                 {isAuth
                   ? (<>
-                        <Button sx={{ marginRight: 1, display: { md: 'block', xs: 'none' } }}>
+                        <Button sx={{ marginRight: 1, display: { md: 'flex', xs: 'none' }, alignItems: 'center', justifyContent: 'center' }}>
                             <Link to='/profile'>
                                 <Avatar alt="Remy Sharp" src={imageSrc}/>
                             </Link>
                         </Button>
-                        <Button variant='contained' color="primary" onClick={logoutHandler}>Выйти</Button>
+                        <Button variant='contained' color="primary" onClick={logoutHandler}>Вийти</Button>
                     </>
                     )
                   : (<Box sx={{ display: 'flex', flexDirection: 'column' }}>
                             {pathname === '/signUp'
                               ? <Button variant='contained' color="primary" >
-                                    <Link className={styles.link} to={'/signIn'}>Войти</Link>
+                                    <Link className={styles.link} to={'/signIn'}>Увійти</Link>
                                 </Button>
                               : <Button variant='contained' color="primary">
-                                    <Link className={styles.link} to={'/signUp'}>Регистрация</Link>
+                                    <Link className={styles.link} to={'/signUp'}>Реєстрація</Link>
                                 </Button>
                             }
                     </Box>

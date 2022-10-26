@@ -25,7 +25,7 @@ const CreatePostButton: React.FC = () => {
             <Button onClick={onClickCreateBtn} sx={{ borderRadius: 25, fontSize: { xs: 'small', md: 'large' } }} size='large'
                     variant="contained"
                     endIcon={<CreateIcon />} startIcon={<Avatar src={imageSrc} />}>
-                Что у Вас нового, {firstName} {lastName}?
+                Що у вас нового, {firstName} {lastName}?
             </Button>
             <ModalWindow open={open} setOpen={(isOpen) => {
               setOpen(isOpen)

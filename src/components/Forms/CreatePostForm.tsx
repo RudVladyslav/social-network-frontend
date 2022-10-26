@@ -15,6 +15,7 @@ import { CreatePostParams } from '../../store/slices/profile/types'
 import { useAppDispatch } from '../../store'
 import { fetchCreatePost } from '../../store/slices/posts/slice'
 import { theme } from '../../theme'
+import fileReader from '../../utils/fileReader'
 
 interface CreatePostFormParams {
   setOpen: (visible: boolean) => void
@@ -36,23 +37,6 @@ const CreatePostForm: React.FC<CreatePostFormParams> = ({ setOpen }) => {
     mode: 'onChange'
   })
 
-  const fileReader = (file: any): void => {
-    if (file.length === 0) {
-      if (imgRef.current !== null) {
-        imgRef.current.src = ''
-        return
-      }
-    }
-    const reader = new FileReader()
-    reader.addEventListener('load',
-      (event: any) => {
-        if (imgRef.current !== null) {
-          imgRef.current.src = event.target.result
-        }
-      })
-    reader.readAsDataURL(file[0])
-  }
-
   const onSubmit: SubmitHandler<CreatePostParams> = async (values) => {
     setIsCreate(true)
     values.image = values.image[0]
@@ -68,7 +52,7 @@ const CreatePostForm: React.FC<CreatePostFormParams> = ({ setOpen }) => {
         <>
             <Box sx={{ textAlign: 'center', paddingBottom: 2 }}>
                 <Typography variant='h6' sx={{ color: theme.palette.primary.main }}>
-                    Создать пост
+                    Створити публікацію
                 </Typography>
             </Box>
             {isCreate
@@ -84,30 +68,30 @@ const CreatePostForm: React.FC<CreatePostFormParams> = ({ setOpen }) => {
                             ref={imgRef}
                             component="img"
                             height="250"
-                            alt="Изображения вашего поста"
+                            alt="Зображення вашої публікації"
                         />
                         <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: 2 }}>
                             <input
                                 type='file'
                                 {...register('image')}
-                                onChange={(e) => fileReader(e.target.files)}
+                                onChange={(e) => fileReader(e.target.files, imgRef)}
                             />
                         </Box>
                         <CardContent>
                             <TextField
-                                label={'Написать  пост'}
+                                label={'Створити публікацію'}
                                 variant="outlined"
                                 maxRows={10}
                                 multiline
                                 fullWidth
-                                {...register('text', { required: 'Описания поста' })}
+                                {...register('text', { required: 'Повинен бути опис публікації' })}
                                 error={Boolean(errors.text?.message)}
                                 helperText={errors.text?.message}
                             />
                         </CardContent>
                         <CardActions sx={{ display: 'flex', justifyContent: 'space-between' }}>
-                            <Button variant='contained' disabled={!isValid || isCreate} type='submit'>Создать</Button>
-                            <Button variant='contained' color='error' onClick={() => setOpen(false)}>Отмена</Button>
+                            <Button variant='contained' disabled={!isValid || isCreate} type='submit'>Створити</Button>
+                            <Button variant='contained' color='error' onClick={() => setOpen(false)}>Відмінити</Button>
                         </CardActions>
                     </Card>
                 </form>

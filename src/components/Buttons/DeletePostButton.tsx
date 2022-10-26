@@ -26,11 +26,11 @@ const DeletePostButton: React.FC<DeletePostButtonProps> = ({ id }) => {
       </IconButton>
           <ModalWindow open={open} setOpen={(isOpen) => setOpen(isOpen)}>
               <Box sx={{ display: 'flex', justifyContent: 'center', textAlign: 'center' }}>
-                <Typography variant={'h6'} >Вы уверены, что хотите удалить?</Typography>
+                <Typography variant={'h6'} >Ви впевнені, що бажаєте видалити?</Typography>
               </Box>
               <Box style={{ display: 'flex', justifyContent: 'space-evenly', marginTop: 30 }}>
-                  <Button size='large' variant='contained' onClick={onClickCancel}>Отмена</Button>
-                  <Button size='large' variant='contained' color="error" onClick={onClickDeletePost}>Удалить</Button>
+                  <Button size='large' variant='contained' onClick={onClickCancel}>Відмінити</Button>
+                  <Button size='large' variant='contained' color="error" onClick={onClickDeletePost}>Видалити</Button>
               </Box>
           </ModalWindow>
       </>

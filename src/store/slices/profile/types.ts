@@ -24,13 +24,6 @@ export interface CreatePostParams {
   text: string
 }
 
-interface FollowingUsers {
-  id: number
-  firstName: string
-  lastName: string
-  image: string
-}
-
 export interface ProfileData {
   id: number
   firstName: string

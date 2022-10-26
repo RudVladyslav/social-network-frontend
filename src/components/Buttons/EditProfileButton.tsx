@@ -9,7 +9,7 @@ const EditProfileButton: React.FC = () => {
   return (
         <>
             <Box sx={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'center', marginTop: { sm: 0, xs: 2 } }}>
-                <Button onClick={() => setOpen(true)} variant='contained'>Редактировать</Button>
+                <Button onClick={() => setOpen(true)} variant='contained'>Редагувати</Button>
             </Box>
             <ModalWindow open={open} setOpen={(isOpen) => setOpen(isOpen)}>
                 <EditProfileForm setOpen={setOpen} />

@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import {
   Post, PostsSliceState, PostsWall
 } from './types'
@@ -88,17 +88,17 @@ export const postsSlice = createSlice({
     setPosts (state, action) {
       state.userPosts = action.payload
     },
-    setDeletePost (state, action) {
+    setDeletePost (state, action: PayloadAction<number>) {
       state.userPosts = [...state.userPosts].filter(post => post.id !== action.payload)
     },
-    setLike (state, action) {
+    setLike (state, action: PayloadAction<number>) {
       const post = state.postsWall.find(post => post.id === action.payload)
       if (post) {
         post.liked = true
         post.likesCount++
       }
     },
-    setUnlike (state, action) {
+    setUnlike (state, action: PayloadAction<number>) {
       const post = state.postsWall.find(post => post.id === action.payload)
       if (post) {
         post.liked = false

@@ -29,7 +29,7 @@ const Followers: React.FC = () => {
   return (
       <>
         <Paper sx={{ padding: 1, marginBottom: 1, textAlign: 'center' }}>
-            <Typography variant={'h5'} sx={{ fontSize: { md: 28, xs: 22 } }}>Ваши подписчики</Typography>
+            <Typography variant={'h5'} sx={{ fontSize: { md: 28, xs: 22 } }}>Ваші читачі</Typography>
         </Paper>
           <Box sx={{ flexGrow: 1 }}>
             <Grid container spacing={{ xs: 1, md: 2 }} columns={{ xs: 2, sm: 8, md: 12 }}>
@@ -50,7 +50,7 @@ const Followers: React.FC = () => {
             {followers.length === 0 && appStatus !== Status.LOADING &&
                 <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginY: 30 }}>
                   <Typography variant='h5'>
-                    У вас нету подписчиков
+                    У вас немає читачів
                   </Typography>
                 </Box>
             }

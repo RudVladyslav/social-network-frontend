@@ -60,19 +60,19 @@ const Profile: React.FC = () => {
                                       fontWeight: 'bold'
                                     }}>{userName}</Typography>
                                     <Typography variant={'subtitle2'} sx={{ marginLeft: { sm: 2, xs: 0 }, marginTop: 1 }}>
-                                        <b>Ваш статус: </b>{userData.status === '' ? 'Статус отсутсвует' : userData.status}
+                                        <b>Ваш статус: </b>{userData.status === '' ? 'Статус відсутній' : userData.status}
                                     </Typography>
                                     <Typography variant={'subtitle2'} sx={{
                                       marginLeft: { sm: 2, xs: 0 },
                                       marginTop: 1
                                     }}>
-                                      <b>Подписки: </b>{followingCount}
+                                      <b>Підписки: </b>{followingCount}
                                     </Typography>
                                     <Typography variant={'subtitle2'} sx={{
                                       marginLeft: { sm: 2, xs: 0 },
                                       marginTop: 1
                                     }}>
-                                      <b>Подписчики: </b>{followersCount}
+                                      <b>Читачі: </b>{followersCount}
                                     </Typography>
                                 </Box>
                             </Box>
@@ -84,7 +84,7 @@ const Profile: React.FC = () => {
                         {userPosts.length === 0
                           ? <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginY: 25 }}>
                                 <Typography variant='h5'>
-                                    У вас пока нет публикаций
+                                    У вас поки немає публікацій
                                 </Typography>
                             </Box>
                           : userPosts.map(({ id, text, image, updatedAt, likesCount }) => (
@@ -102,7 +102,7 @@ const Profile: React.FC = () => {
                                   </Box>
                                   <Box sx={{ paddingRight: { md: 2, xs: 0 } }}>
                                     <Typography sx={{ fontSize: { md: 18, xs: 12 } }}>
-                                       Всего понравилось {likesCount} раз
+                                      Усього вподобайок: {likesCount}
                                     </Typography>
                                   </Box>
                                 </SinglePost>

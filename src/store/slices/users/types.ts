@@ -19,13 +19,3 @@ export interface User {
   follower: boolean
 }
 
-export interface FollowingUser {
-  id: number
-  firstName: string
-  lastName: string
-  image: string
-  status: string
-  createdAt: string
-  updatedAt: string
-  followed: boolean
-}

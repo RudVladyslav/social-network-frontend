@@ -11,19 +11,22 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import { AuthenticateParams, AuthenticateResponse, Status } from '../../store/slices/app/types'
 import AuthAlert from '../../components/Alerts/AuthAlert'
 import { Link } from 'react-router-dom'
-import { Box } from '@mui/material'
+import { Box, IconButton, InputAdornment } from '@mui/material'
 import axios from '../../axios'
 import { setIsAuth, setStatusApp } from '../../store/slices/app/slice'
 import { useAppDispatch } from '../../store'
 import { appStatusSelector } from '../../store/slices/app/selectors'
 import { useSelector } from 'react-redux'
 import handleAxisError from '../../utils/handleAxisError'
+import VisibilityIcon from '@mui/icons-material/Visibility'
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff'
 
 const SignIn: React.FC = () => {
   const appStatus = useSelector(appStatusSelector)
   const dispatch = useAppDispatch()
   const [message, setMessage] = useState<string>('')
   const [status, setStatus] = useState < 'success' | 'error' | '' >('')
+  const [isVisiblePassword, setIsVisiblePassword] = useState(false)
 
   const {
     register,
@@ -36,6 +39,8 @@ const SignIn: React.FC = () => {
     },
     mode: 'onChange'
   })
+
+  const onClickToggleVisiblePassword = (): void => setIsVisiblePassword(prevState => !prevState)
 
   const onSubmit: SubmitHandler<AuthenticateParams> = async (values) => {
     try {
@@ -59,13 +64,13 @@ const SignIn: React.FC = () => {
                 <img src={signInImage} className={styles.image} alt=""/>
                 <Paper style={{ padding: 30, maxWidth: 700 }}>
                     <Typography variant="h5" style={{ textAlign: 'center' }}>
-                        Вход в аккаунт
+                        Вхід в акаунт
                     </Typography>
                     <form onSubmit={handleSubmit(onSubmit)} style={{ marginTop: 40 }}>
                         <TextField
-                            error={Boolean(errors.password?.message)}
-                            helperText={errors.password?.message}
-                            {...register('email', { required: 'Укажите почту' })}
+                            error={Boolean(errors.email?.message)}
+                            helperText={errors.email?.message}
+                            {...register('email', { required: 'Вкажіть пошту' })}
                             type={'email'}
                             style={{ marginTop: 20 }}
                             label="E-Mail"
@@ -74,11 +79,19 @@ const SignIn: React.FC = () => {
                         <TextField
                             error={Boolean(errors.password?.message)}
                             helperText={errors.password?.message}
-                            {...register('password', { required: 'Укажите пароль' })}
-                            type={'password'}
+                            {...register('password', { required: 'Вкажіть пароль' })}
+                            type={isVisiblePassword ? 'text' : 'password'}
                             style={{ marginTop: 20 }}
                             label="Пароль"
                             fullWidth
+                            InputProps={{
+                              endAdornment: (<InputAdornment position="end" >
+                                        <IconButton size='small' color='primary' onClick={onClickToggleVisiblePassword}>
+                                            {isVisiblePassword ? <VisibilityOffIcon/> : <VisibilityIcon/>}
+                                        </IconButton>
+                                    </InputAdornment>
+                              )
+                            }}
                         />
                         <Button
                             disabled={!isValid || appStatus === Status.LOADING}
@@ -87,11 +100,11 @@ const SignIn: React.FC = () => {
                             size="large"
                             variant="contained"
                             fullWidth>
-                            Войти
+                            Увійти
                         </Button>
                     </form>
                     <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: 2, textAlign: 'center' }}>
-                        <Typography>Нету аккаунта? <Link style={{ color: 'secondary' }} to={'/signup'}>Зарегистрироваться</Link></Typography>
+                        <Typography>Немає акаунта? <Link style={{ color: 'secondary' }} to={'/signup'}>Зареєструватись</Link></Typography>
                     </Box>
                 </Paper>
             </Container>

@@ -19,22 +19,22 @@ interface NavbarItem {
 const navbarItems: NavbarItem[] = [
   {
     path: '/',
-    title: 'Главная',
+    title: 'Головна',
     Icon: HomeIcon
   },
   {
     path: '/users',
-    title: 'Поиск друзей',
+    title: 'Пошук друзів',
     Icon: PersonSearchIcon
   },
   {
     path: '/following',
-    title: 'Подписки',
+    title: 'Підписки',
     Icon: ConnectWithoutContactIcon
   },
   {
     path: '/followers',
-    title: 'Подписчики',
+    title: 'Читачі',
     Icon: PeopleIcon
   }
 
@@ -57,12 +57,12 @@ const Navbar: React.FC = () => {
                 </Link>
                 {navbarItems.map(({ path, title, Icon }, index) =>
                     <Link key={index} className={styles.link} to={path}>
-                            <Button sx={{ paddingTop: 2, paddingBottom: 2 }}>
-                                <Icon fontSize="large"/>
-                                <Typography sx={{ marginLeft: 1, display: { xs: 'none', md: 'block' } }} variant={'h6'}>
-                                    {title}
-                                </Typography>
-                            </Button>
+                        <Button sx={{ paddingTop: 2, paddingBottom: 2 }}>
+                            <Icon fontSize="large"/>
+                            <Typography sx={{ marginLeft: 1, display: { xs: 'none', md: 'block' } }} variant={'h6'}>
+                                {title}
+                            </Typography>
+                        </Button>
                     </Link>
                 )}
             </Stack>

@@ -22,7 +22,7 @@ const UnfollowButton: React.FC<UnfollowButtonProps> = ({ id, onClick }) => {
 
   return (
         <Button onClick={onClickUnfollow} disabled={isToggleUnfollow} size="medium" color="error" variant={'contained'}>
-            Отписаться
+            Відписатись
         </Button>
   )
 }

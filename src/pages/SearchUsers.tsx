@@ -42,16 +42,16 @@ const SearchUsers: React.FC = () => {
                             </Box>
                       : searchUsers.length > 0
                         ? <Grid container spacing={{ xs: 1, md: 2 }} columns={{ xs: 2, sm: 8, md: 12 }}>
-                            {searchUsers.map(({ id, image, firstName, lastName, following }) => (
-                                <Grid xs={2} sm={4} md={3} key={id}>
-                                    <UserItem
-                                            id={id}
-                                          followed={following}
-                                          userName={`${firstName} ${lastName}`}
-                                          image={image}/>
+                                    {searchUsers.map(({ id, image, firstName, lastName, following }) => (
+                                        <Grid xs={2} sm={4} md={3} key={id}>
+                                            <UserItem
+                                                id={id}
+                                                followed={following}
+                                                userName={`${firstName} ${lastName}`}
+                                                image={image}/>
+                                        </Grid>
+                                    ))}
                                 </Grid>
-                            ))}
-                        </Grid>
 
                         : <Grid container spacing={{ xs: 1, md: 2 }} columns={{ xs: 2, sm: 8, md: 12 }}>
                                     {allUsers.map(({ id, image, firstName, lastName, following }) => (

@@ -79,7 +79,7 @@ export const userSlice = createSlice({
         state.searchUsers = []
       }
       if (state.searchUsers.length === 0 && state.searchValue !== '') {
-        state.searchMessage = 'Не найдено'
+        state.searchMessage = 'Не знайдено'
       } else {
         state.searchMessage = ''
       }

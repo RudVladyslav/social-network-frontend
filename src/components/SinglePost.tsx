@@ -46,7 +46,7 @@ const SinglePost: React.FC<SinglePostPropsType> = ({
                         component="img"
                         height="600"
                         image={postImagePath}
-                        alt="Paella dish"
+                        alt="Зображення публікації"
                     />
             }
             <CardContent>

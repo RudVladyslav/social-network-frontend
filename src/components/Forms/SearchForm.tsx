@@ -39,7 +39,7 @@ const SearchForm: React.FC = () => {
                     </IconButton>
                 </InputAdornment>
           )
-        }} value={value} fullWidth label="Введите имя друга" id="fullWidth" onChange={event => onChangeInput(event)} />
+        }} value={value} fullWidth label="Введіть ім'я друга" id="fullWidth" onChange={event => onChangeInput(event)} />
   )
 }
 

@@ -74,7 +74,7 @@ const EditProfileForm: React.FC<EditProfileFormProps> = ({ setOpen }) => {
         <>
             <Box sx={{ textAlign: 'center', paddingBottom: 2 }}>
               <Typography variant='h6' sx={{ color: theme.palette.primary.main }}>
-                Редактировать профиль
+                Редагувати профіль
               </Typography>
             </Box>
             <Card sx={{ padding: 2 }}>
@@ -99,18 +99,18 @@ const EditProfileForm: React.FC<EditProfileFormProps> = ({ setOpen }) => {
                         <TextField
                             error={Boolean(errors.firstName?.message)}
                             helperText={errors.firstName?.message}
-                            {...register('firstName', { required: 'Укажите имя' })}
+                            {...register('firstName', { required: "Вкажіть ім'я" })}
                             type={'text'}
                             sx={{ width: 'auto', margin: { xs: '10px 0', sm: '0 10px 0 0' } }}
-                            label="Имя"
+                            label="Ім'я"
                         />
                         <TextField
                             error={Boolean(errors.lastName?.message)}
                             helperText={errors.lastName?.message}
-                            {...register('lastName', { required: 'Укажите фамилию' })}
+                            {...register('lastName', { required: 'Вкажіть фамілію' })}
                             type={'text'}
                             sx={{ width: 'auto' }}
-                            label="Фамилия"
+                            label="Фамілія"
                         />
                     </Box>
                     <TextField
@@ -124,8 +124,8 @@ const EditProfileForm: React.FC<EditProfileFormProps> = ({ setOpen }) => {
                         fullWidth
                     />
                     <Box sx={{ display: 'flex', marginTop: 3, justifyContent: 'space-between' }}>
-                        <Button disabled={!isValid || isLoading} type='submit' variant='contained'>Сохранить</Button>
-                        <Button variant='contained' color='error' onClick={onClose}>Отмена</Button>
+                        <Button disabled={!isValid || isLoading} type='submit' variant='contained'>Зберегти</Button>
+                        <Button variant='contained' color='error' onClick={onClose}>Відмінити</Button>
                     </Box>
                 </form>
             }

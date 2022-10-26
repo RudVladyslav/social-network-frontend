@@ -23,7 +23,7 @@ const FollowButton: React.FC<FollowButtonProps> = ({ id, onClick }) => {
 
   return (
         <Button onClick={onClickFollow} disabled={isToggleFollow} size="medium" color="primary" variant={'contained'}>
-            Подписаться
+            Підписатись
         </Button>
   )
 }

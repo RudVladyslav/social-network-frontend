@@ -17,6 +17,7 @@ import { updatePostParams } from '../../store/slices/posts/types'
 import axios from '../../axios'
 import imagePath from '../../utils/imagePath'
 import { theme } from '../../theme'
+import fileReader from '../../utils/fileReader'
 
 interface UpdatePostFormParams {
   setOpen: (visible: boolean) => void
@@ -61,23 +62,6 @@ const EditPostForm: React.FC<UpdatePostFormParams> = ({ setOpen, id }) => {
     mode: 'onChange'
   })
 
-  const fileReader = (file: any): void => {
-    if (file.length === 0) {
-      if (imgRef.current !== null) {
-        imgRef.current.src = ''
-        return
-      }
-    }
-    const reader = new FileReader()
-    reader.addEventListener('load',
-      (event: any) => {
-        if (imgRef.current !== null) {
-          imgRef.current.src = event.target.result
-        }
-      })
-    reader.readAsDataURL(file[0])
-  }
-
   const onSubmit: SubmitHandler<CreatePostParams> = async (values) => {
     setIsLoading(true)
     values.image = values.image[0]
@@ -92,7 +76,7 @@ const EditPostForm: React.FC<UpdatePostFormParams> = ({ setOpen, id }) => {
         <>
             <Box sx={{ textAlign: 'center', paddingBottom: 2 }}>
               <Typography variant='h6' sx={{ color: theme.palette.primary.main }}>
-                Редактировать пост
+                Редагувати публікацію
               </Typography>
             </Box>
             {isLoading
@@ -108,22 +92,22 @@ const EditPostForm: React.FC<UpdatePostFormParams> = ({ setOpen, id }) => {
                             <input
                                 {...register('image')}
                                 type='file'
-                                onChange={(e) => fileReader(e.target.files)}
+                                onChange={(e) => fileReader(e.target.files, imgRef)}
                             />
                         </Box>
                         <CardContent>
                             <TextField
-                                label={'Редактировать описания пост'}
+                                label={'Редагувати опис публікації'}
                                 variant="outlined"
                                 maxRows={10}
                                 multiline
                                 fullWidth
-                                {...register('text', { required: 'Описания поста' })}
+                                {...register('text', { required: 'Повинен бути опис публікації' })}
                             />
                         </CardContent>
                         <CardActions sx={{ display: 'flex', justifyContent: 'space-between' }}>
-                            <Button variant='contained' type='submit' disabled={isLoading}>Сохранить</Button>
-                            <Button variant='contained' color='error' onClick={() => setOpen(false)}>Отмена</Button>
+                            <Button variant='contained' type='submit' disabled={isLoading}>Зберегти</Button>
+                            <Button variant='contained' color='error' onClick={() => setOpen(false)}>Відмінити</Button>
                         </CardActions>
                     </Card>
                 </form>

@@ -39,7 +39,7 @@ const MainPage: React.FC = () => {
                       {postsWall.length === 0
                         ? <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: 30 }}>
                               <Typography variant='h5'>
-                                  У вас нету подписок
+                                  У вас немає підписок
                               </Typography>
                           </Box>
                         : postsWall.map(({ image, likesCount, text, updatedAt, id, user, liked }) => {
@@ -50,7 +50,7 @@ const MainPage: React.FC = () => {
                                         time={updatedAt} userImage={userImage}
                                         userName={userName} >
                               {!liked ? <LikePostButton id={id} /> : <UnlikePostButton id={id}/>}
-                              <Typography sx={{ paddingRight: 2 }}>Понравилось {likesCount} раз</Typography>
+                              <Typography sx={{ paddingRight: 2 }}>Усього вподобайок: {likesCount}</Typography>
                             </SinglePost>
                           )
                         }
